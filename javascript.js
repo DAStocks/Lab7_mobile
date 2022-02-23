@@ -15,7 +15,7 @@ var cartoData = L.layerGroup().addTo(map);
 var url = "https://dastocks.carto.com/api/v2/sql";
 var urlGeoJSON = url + "?format=GeoJSON&q=";
 // change the Query below by replacing lab_7_name with your table name
-var sqlQuery = "SELECT the_geom, the_geom, name, description, Enjoyment, Date, Traffic, Distance, Location, Fountain, Restroom, Slide, Swings, Jungle FROM lab_7_stocks";
+var sqlQuery = "SELECT * FROM lab_7_stocks"
 
 function addPopup(feature, layer) {
     layer.bindPopup(
@@ -148,7 +148,7 @@ function setData(e) {
 			// Create SQL expression to insert layer
             var drawing = JSON.stringify(layer.toGeoJSON().geometry);
             var sql =
-                "INSERT INTO lab_7_stocks (the_geom, name, description, Enjoyment, Date, Traffic, Distance, Location, Fountain, Restroom, Slide, Swings, Jungle) " +
+                "INSERT INTO lab_7_stocks (the_geom, input_desc, input_user, enjoyment, traffic, distance, location, fountain, restroom, slide, swings, jungle) " +
                 "VALUES (ST_SetSRID(ST_GeomFromGeoJSON('" +
                 drawing + "'), 4326), '" +
                 locationName + "', '" +
@@ -157,11 +157,11 @@ function setData(e) {
                 enteredTraffic + "', '" +
                 enteredDistance + "', '" +
                 enteredLocation + "', '" +
-                enteredFountain + "') ";
+                enteredFountain + "', '" +
                 enteredRestroom + "', '" +
                 enteredSlide + "', '" +
                 enteredSwings + "', '" +
-                enteredJungle + "') ";
+                enteredJungle + "')";
             console.log(sql);
 
             // Send the data
@@ -187,7 +187,7 @@ function setData(e) {
         var newData = layer.toGeoJSON();
         newData.properties.input_desc = locationName;
         newData.properties.input_name = enteredUser;
-        newData.properties.enjoyment = enteredEnjoyment;
+        newData.properties.Enjoyment = enteredEnjoyment;
         newData.properties.Traffic = enteredTraffic;
         newData.properties.Distance = enteredDistance;
         newData.properties.Location = enteredLocation;
