@@ -2,9 +2,37 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: lightgreen;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+p {
+  font-size: 32;
 }
 
 #map {
   width: 100%;
   height: 100%;
+}
+
+form {
+  font-size: 14;
+   font-family: 'Trebuchet MS', sans-serif;
+   line-height: 1.8;
+}
+.column {
+  float: left;
+  width: 24.5%;
+  padding: 1px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+img {
+  width: 100%;
 }
